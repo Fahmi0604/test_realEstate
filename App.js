@@ -15,6 +15,9 @@ import NavHeaderFilterType from './src/component/NavHeader/NavHeaderFilterType';
 import FilterStatus from './src/screen/FilterStatus';
 import NavHeaderFilterStatus from './src/component/NavHeader/NavHeaderFilterStatus';
 import {DataProvider} from './src/utils/DataContext';
+import DetailPage from './src/screen/DetailPage';
+import ChatPage from './src/screen/ChatPage';
+import NavHeaderChat from './src/component/NavHeader/NavHeaderChat';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -35,18 +38,7 @@ function HomePage() {
       <Tab.Screen
         options={{
           tabBarIcon: ({size, color}) => (
-            <Icon
-              name={'search'}
-              color={color}
-              size={size}
-              style={
-                {
-                  // backgroundColor: '#79828B',
-                  // padding: '5%',
-                  // borderRadius: 1000,
-                }
-              }
-            />
+            <Icon name={'search'} color={color} size={size} />
           ),
         }}
         name="Search"
@@ -138,8 +130,18 @@ const App = () => {
             name="FilterStatus"
             component={FilterStatus}
           />
-          {/* <Stack.Screen name="ListHadits" component={ListHadits} /> */}
-          {/* <Stack.Screen name="DetailHadits" component={DetailHadits} /> */}
+          <Stack.Screen
+            options={{headerShown: false}}
+            name="DetailPage"
+            component={DetailPage}
+          />
+          <Stack.Screen
+            options={{
+              header: NavHeaderChat,
+            }}
+            name="ChatPage"
+            component={ChatPage}
+          />
         </Stack.Navigator>
 
         {/* <MyTabs /> */}
